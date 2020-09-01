@@ -1,16 +1,21 @@
 import pandas as pd
 import pickle as pkl
 
-df = pd.read_csv("data/val_bf.csv")
-
+df = pd.read_csv("../data/val_bf.csv")
+#Above, filepath has been changed. Added "../" at the beginning.
 df.dropna(inplace = True)
 
 target = df["Survived"]
 del(df["Survived"])
     
-model_unpickle = open("data/model.pkl", 'rb')
+model_unpickle = open("../data/model.pkl", 'rb')
+#Above, filepath has been changed. Added "../" at the beginning.
 model = pkl.load(model_unpickle)
-model.close()
+#model.close()
+#Line above gives the following error:
+#AttributeError: 'RandomForestClassifier' object has no attribute 'close'
+#This line should be changed to:
+model_unpickle.close()
 
 predictions = model.predict(df)
 # Reassign target (if it was present) and predictions.

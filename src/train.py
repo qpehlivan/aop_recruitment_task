@@ -1,11 +1,11 @@
-import numpy as np
+#import numpy as np -> Not needed.
 import pandas as pd
 import sklearn
 import pickle as pkl
 
     # Split the data for training.
-df = pd.read_csv("data/train_bf.csv")
-
+df = pd.read_csv("../data/train_bf.csv")
+#Above, filepath has been changed. Added "../" at the beginning.
 y = df["Survived"]
 
 tr_col = []
@@ -19,14 +19,14 @@ for c in df.columns:
 from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(n_estimators=10)
 
-
 # Fit full model and predict on both train and test.
 clf.fit(df[tr_col], y)
 preds = clf.predict(df[tr_col])
 metric_name = "train_accuracy"
 metric_result = sklearn.metrics.accuracy_score(y, preds)
 
-model_pickle = open("data/model.pkl", 'wb')
+model_pickle = open("../data/model.pkl", 'wb')
+#Above, filepath has been changed. Added "../" at the beginning.
 pkl.dump(clf, model_pickle)
 model_pickle.close()
 

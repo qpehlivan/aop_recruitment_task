@@ -30,3 +30,9 @@ def execute(input_file, output_file, force_write = True):
     df.loc[df["FamilySize"] == 1, "IsAlone"] = 1
 
     df.to_csv(output_file)
+    
+execute("../data/train.csv","../data/train_bf.csv")
+
+execute("../data/val.csv","../data/val_bf.csv")
+#Line 34 and 36 has been added with the file path
+#to execute the function above.
